@@ -1,26 +1,137 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --black: #050505;
+  --ink: #0e0e0e;
+  --ink-2: #161616;
+  --ink-3: #1f1f1f;
+  --cream: #f4f4ed;
+  --cream-2: #ebeae0;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.16);
+  --line-dark: rgba(14, 14, 14, 0.12);
+  --muted: rgba(255, 255, 255, 0.62);
+  --muted-dark: rgba(14, 14, 14, 0.62);
+  --blue: #3d7aff;
+  --blue-2: #5b95ff;
+  --blue-deep: #1e40af;
+
+  /* Defaults used as foreground/background by Tailwind */
+  --background: var(--black);
+  --foreground: #f6f6f1;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-black: var(--black);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-cream: var(--cream);
+  --color-cream-2: var(--cream-2);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-line-dark: var(--line-dark);
+  --color-muted: var(--muted);
+  --color-muted-dark: var(--muted-dark);
+  --color-blue: var(--blue);
+  --color-blue-2: var(--blue-2);
+  --color-blue-deep: var(--blue-deep);
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html,
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:
+    var(--font-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.font-display {
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  letter-spacing: -0.02em;
+}
+
+.font-mono {
+  font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* Cinematic dark hero backdrop — radial spotlights + atmospheric gradient */
+.scene-hero {
+  background:
+    radial-gradient(
+      ellipse 80% 60% at 70% 30%,
+      rgba(61, 122, 255, 0.06),
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 100% 80% at 20% 90%,
+      rgba(120, 130, 140, 0.18),
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 60% 50% at 80% 110%,
+      rgba(61, 122, 255, 0.04),
+      transparent 60%
+    ), linear-gradient(180deg, #050505 0%, #0a0a0a 60%, #050505 100%);
+}
+
+/* Subtle film grain overlay used across dark scenes */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.6'/></svg>");
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+}
+
+.scene-curve {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 90% 90% at 110% 20%,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(255, 255, 255, 0.02) 30%,
+    transparent 55%
+  );
+}
+
+::selection {
+  background: var(--blue);
+  color: var(--foreground);
+}
+
+/* Marquee scroll for ticker strip */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+/* Stylized hero glyph — abstract data terrain */
+.data-terrain {
+  background:
+    radial-gradient(circle at 30% 80%, rgba(61, 122, 255, 0.5), transparent 35%),
+    radial-gradient(
+      circle at 70% 60%,
+      rgba(61, 122, 255, 0.18),
+      transparent 30%
+    );
 }
