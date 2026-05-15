@@ -16,13 +16,12 @@ export function CtaBanner() {
       />
       <div className="relative mx-auto flex max-w-[1400px] flex-col items-center px-6 py-28 text-center lg:px-10 lg:py-36">
         <h2 className="mx-auto max-w-4xl font-display text-[48px] font-normal leading-[1.0] tracking-tight text-foreground sm:text-[72px] lg:text-[96px]">
-          Hire the team that{" "}
-          <em className="italic">cares about the long tail.</em>
+          Tell us <em className="italic">what you're trying to ship.</em>
         </h2>
         <p className="mt-6 max-w-xl text-base leading-relaxed text-foreground/85 sm:text-lg">
-          DataThink takes on a small number of engagements each quarter. If you
-          have a question that won't fit in a spreadsheet, we want to hear about
-          it.
+          DataThink takes on a small number of engagements per quarter. Bring
+          the project — we'll scope it honestly, whether that's a sprint of
+          frontend work or a year of statistical modeling.
         </p>
         <Link
           href="#contact"

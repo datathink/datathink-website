@@ -3,8 +3,8 @@ import { Logo } from "./Logo";
 
 const productCol = [
   { l: "Web", href: "#web" },
-  { l: "Packages", href: "#packages" },
-  { l: "Data wrangling", href: "#data" },
+  { l: "R Packages", href: "#packages" },
+  { l: "Responsible AI", href: "#ai" },
   { l: "Approach", href: "#approach" },
 ];
 
@@ -30,8 +30,8 @@ export function Footer() {
           <div className="col-span-2 md:col-span-1">
             <Logo />
             <p className="mt-5 max-w-[14rem] text-[13px] leading-relaxed text-foreground/75">
-              A software and statistics studio. We build what comes after the
-              analysis.
+              A small studio of engineers and statisticians. Web, R packages,
+              and applied AI.
             </p>
             <div className="mt-6 flex items-center gap-2">
               <Social label="GitHub">

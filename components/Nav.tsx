@@ -3,15 +3,15 @@ import { Logo } from "./Logo";
 
 const links = [
   { href: "#web", label: "Web" },
-  { href: "#packages", label: "Packages" },
-  { href: "#data", label: "Data" },
+  { href: "#packages", label: "R Packages" },
+  { href: "#ai", label: "AI" },
   { href: "#approach", label: "Approach" },
   { href: "#contact", label: "Contact" },
 ];
 
 export function Nav() {
   return (
-    <header className="absolute top-0 left-0 right-0 z-50 w-full">
+    <header className="fixed top-0 left-0 right-0 z-50 w-full border-b border-white/5 bg-black/70 backdrop-blur-xl supports-[backdrop-filter]:bg-black/55">
       <nav className="mx-auto flex h-20 max-w-[1400px] items-center justify-between px-6 lg:px-10">
         <Link
           href="/"

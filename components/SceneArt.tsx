@@ -1,7 +1,7 @@
 /**
  * Stylized "scene" graphics that stand in for Robinhood's cinematic photography.
  * Each is a self-contained dark visual evoking the practice — code editor,
- * package manifest, data table — using only SVG + CSS.
+ * R package manifest, AI audit console — using only SVG + CSS.
  */
 
 export function CodeScene() {
@@ -219,67 +219,103 @@ export function PackageScene() {
   );
 }
 
-export function TableScene() {
+export function AiScene() {
   return (
-    <div className="relative aspect-[5/4] w-full overflow-hidden rounded-[28px] border border-line-strong bg-gradient-to-br from-[#0e0e0e] via-[#0a0a0a] to-[#050505] shadow-[0_40px_120px_-40px_rgba(61,122,255,0.14)]">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_30%,rgba(61,122,255,0.10),transparent_55%)]" />
+    <div className="relative aspect-[5/4] w-full overflow-hidden rounded-[28px] border border-line-strong bg-gradient-to-br from-[#0e0e0e] via-[#0a0a0a] to-[#050505] shadow-[0_40px_120px_-40px_rgba(61,122,255,0.16)]">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_30%,rgba(61,122,255,0.12),transparent_55%)]" />
 
+      {/* Header bar */}
       <div className="flex items-center justify-between border-b border-line px-5 py-3 font-mono text-[11px]">
         <div className="flex items-center gap-2 text-foreground/60">
-          <span className="inline-flex h-5 items-center rounded bg-white/10 px-1.5 text-[10px] font-semibold text-foreground/80">
-            SQL
+          <span className="inline-flex h-5 items-center rounded bg-blue/20 px-1.5 text-[10px] font-semibold text-blue">
+            AUDIT
           </span>
-          duckdb · cohorts.parquet
+          run · 0938.json
         </div>
-        <div className="text-foreground/40">2,847 rows</div>
+        <div className="flex items-center gap-1.5 text-foreground/40">
+          <span className="h-1.5 w-1.5 rounded-full bg-blue" />
+          reviewed · 2026-05-14
+        </div>
       </div>
 
-      <div className="grid h-[calc(100%-44px)] grid-rows-[auto_1fr]">
-        {/* Query */}
-        <div className="border-b border-line p-5 font-mono text-[11px] leading-[1.75]">
-          <div className="text-foreground/40">query.sql</div>
-          <div className="mt-1.5 text-foreground/80">
-            <span className="text-[#82aaff]">SELECT</span> cohort_month,
+      <div className="grid h-[calc(100%-44px)] grid-rows-[auto_1fr_auto] font-mono text-[11px] leading-[1.6]">
+        {/* Prompt */}
+        <div className="border-b border-line px-5 py-3.5">
+          <div className="text-[10px] uppercase tracking-wider text-foreground/40">
+            Prompt
           </div>
-          <div className="ml-7 text-foreground/80">
-            <span className="text-[#c792ea]">avg</span>(ltv){" "}
-            <span className="text-[#82aaff]">AS</span> mean_ltv,
-          </div>
-          <div className="ml-7 text-foreground/80">
-            <span className="text-[#c792ea]">quantile_cont</span>(ltv, 0.5){" "}
-            <span className="text-[#82aaff]">AS</span> p50
-          </div>
-          <div className="text-foreground/80">
-            <span className="text-[#82aaff]">FROM</span> users{" "}
-            <span className="text-[#82aaff]">GROUP BY</span> cohort_month
+          <div className="mt-1.5 text-foreground/85">
+            <span className="text-blue">›</span> Summarize Q3 cohort retention
+            and flag any segment with{" "}
+            <span className="text-foreground">CI lower bound</span> below the
+            target.
           </div>
         </div>
 
-        {/* Result table */}
-        <div className="overflow-hidden p-5">
-          <div className="grid grid-cols-[1.4fr_1fr_1fr] gap-x-3 border-b border-line pb-1.5 font-mono text-[10px] uppercase tracking-wider text-foreground/40">
-            <div>cohort_month</div>
-            <div>mean_ltv</div>
-            <div>p50</div>
-          </div>
-          {[
-            ["2026-01", "$284.10", "$210.00"],
-            ["2026-02", "$311.74", "$248.50"],
-            ["2026-03", "$298.02", "$226.00"],
-            ["2026-04", "$342.91", "$272.50"],
-            ["2026-05", "$361.18", "$295.00", true],
-          ].map(([m, mean, p50, hl], _i) => (
-            <div
-              key={m as string}
-              className={`grid grid-cols-[1.4fr_1fr_1fr] gap-x-3 border-b border-line/60 py-1.5 font-mono text-[11px] ${
-                hl ? "text-blue" : "text-foreground/85"
-              }`}
-            >
-              <div>{m}</div>
-              <div>{mean}</div>
-              <div>{p50}</div>
+        {/* Run metadata + steps */}
+        <div className="px-5 py-3.5">
+          <div className="grid grid-cols-[110px_1fr] gap-y-2 text-foreground/70">
+            <div className="text-foreground/40">Model</div>
+            <div className="text-foreground/90">
+              claude-opus-4.7 · temp 0.2 · seed 42
             </div>
-          ))}
+
+            <div className="text-foreground/40">Sources</div>
+            <div className="text-foreground/90">
+              4 internal datasets ·{" "}
+              <span className="text-blue">cited inline</span>
+            </div>
+
+            <div className="text-foreground/40">Tool calls</div>
+            <div className="flex flex-wrap gap-1.5">
+              {[
+                "read_csv",
+                "fit_cohort_model",
+                "validate",
+                "render_report",
+              ].map((t) => (
+                <span
+                  key={t}
+                  className="rounded-md border border-line bg-white/[0.02] px-1.5 py-0.5 text-[10px] text-foreground/75"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+
+            <div className="text-foreground/40">Validation</div>
+            <div className="text-foreground/90">
+              held-out check <span className="text-blue">·</span> 94.1% match{" "}
+              <span className="text-foreground/40">vs. ground truth</span>
+            </div>
+
+            <div className="text-foreground/40">Human review</div>
+            <div className="flex items-center gap-1.5 text-blue">
+              <svg
+                width="11"
+                height="11"
+                viewBox="0 0 14 14"
+                fill="none"
+                aria-hidden="true"
+              >
+                <title>approved</title>
+                <path
+                  d="M3 7.5l2.5 2.5L11 4"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              Approved by E. Glenn
+            </div>
+          </div>
+        </div>
+
+        {/* Footer hash */}
+        <div className="flex items-center justify-between border-t border-line bg-black/40 px-5 py-2.5 text-[10px] text-foreground/40">
+          <span>sha256 · 7a4f…e21b</span>
+          <span>reproducible · ✓</span>
         </div>
       </div>
     </div>

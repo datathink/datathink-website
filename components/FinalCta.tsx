@@ -14,8 +14,8 @@ export function FinalCta() {
 
       <div className="relative mx-auto flex max-w-[1400px] flex-col items-center px-6 py-32 text-center lg:px-10 lg:py-40">
         <h2 className="mx-auto max-w-4xl font-display text-[56px] font-normal leading-[0.98] tracking-tight text-foreground sm:text-[88px] lg:text-[112px]">
-          Bring us your{" "}
-          <em className="italic text-blue">hardest data problem.</em>
+          Bring us{" "}
+          <em className="italic text-blue">the part that's hard.</em>
         </h2>
 
         <div className="mt-12 flex flex-col items-center gap-4 sm:flex-row">

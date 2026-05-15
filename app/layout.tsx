@@ -22,9 +22,9 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "DataThink — Statistics, Software, and Data Wrangling",
+  title: "DataThink — Web, R Packages, and Responsible AI",
   description:
-    "DataThink builds modern web applications, develops production-grade statistical packages, and wrangles the messy data underneath. Based in Rexburg, Idaho.",
+    "DataThink builds modern web applications, ships production-grade R packages, and uses AI responsibly. Based in Rexburg, Idaho.",
 };
 
 export default function RootLayout({
