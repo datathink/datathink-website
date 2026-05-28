@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Datathink Website
 
-## Getting Started
+The marketing website for Datathink, built with [Next.js](https://nextjs.org) (App Router), React 19, and Tailwind CSS v4.
 
-First, run the development server:
+## Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [Node.js](https://nodejs.org) 24
+- [pnpm](https://pnpm.io) 11 (this project uses pnpm as its package manager)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Running Locally
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   ```bash
+   git clone https://github.com/datathink/datathink-website.git
+   cd datathink-website
+   ```
 
-## Learn More
+2. Install dependencies:
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   pnpm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Start the development server:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```bash
+   pnpm dev
+   ```
 
-## Deploy on Vercel
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The page auto-updates as you edit files. Components live in `components/` and pages live in `app/`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Available Scripts
+
+- `pnpm dev` — start the development server
+- `pnpm build` — create a production build
+- `pnpm start` — serve the production build
+- `pnpm lint` — check the code with Biome
+- `pnpm format` — format the code with Biome
+
+## Contributing
+
+We use a branch-and-pull-request workflow. Please do not commit directly to `main`.
+
+1. Create a branch for your change:
+
+   ```bash
+   git checkout -b your-feature-branch
+   ```
+
+2. Make your changes and commit them. Before pushing, make sure linting and the build pass (these also run in CI):
+
+   ```bash
+   pnpm lint
+   pnpm build
+   ```
+
+3. Push your branch and open a pull request:
+
+   ```bash
+   git push -u origin your-feature-branch
+   gh pr create
+   ```
+
+4. Assign [Eli (`Ebj8`)](https://github.com/Ebj8) as the reviewer on your PR:
+
+   ```bash
+   gh pr edit --add-reviewer Ebj8
+   ```
+
+   Or add Eli as a reviewer from the PR page on GitHub.
+
+Once Eli approves the PR, it can be merged.
